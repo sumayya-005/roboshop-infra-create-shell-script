@@ -1,6 +1,6 @@
 #!/bin/bash
 ######change these Values###
-ZONE_ID="
+ZONE_ID="Z06198638E0IJOLZ2M33"
 SG_NAME="allow-all"
 
 
@@ -10,7 +10,7 @@ CREATE_ec2(){
           --instance-type  t3.micro \
           --tag-specifications"ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]") \
           --security-group-ids ${SGID} \
-            |jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
+           |jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
   
 sed -e "s/IPADDRESS/${PRIVATE_IP}/"-e "s/COMPONENT/${COMPONENT}"/ route53.json >/tmp/record.json
 aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch file:///tmp/record.json | jq
@@ -30,7 +30,7 @@ fi
      exit 1
   fi
   
-for component in catalouge cart user shipping payment frontend mongodb mysql rabbitmq redis dispatch; do 
+for component in catalogue cart user shipping payment frontend mongodb mysql rabbitmq redis dispatch; do 
     COMPONENT="${component}"
      create_ec2
 done
