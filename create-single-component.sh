@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##### Change these values ###
-ZONE_ID="Z06198638E0IJOLZ2M33"
+ZONE_ID="Z02090163Q152ZKQQQT6A"
 SG_NAME="allow-all"
 #ENV="dev"
 #############################
@@ -37,7 +37,7 @@ fi
 
 COMPONENT="${1}"
 if [ -z "${COMPONENT}" ]; then
-  echo "Frontend"
+  echo "Input component name is needed"
   exit 1
 fi
 
