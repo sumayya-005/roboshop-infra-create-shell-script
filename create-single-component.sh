@@ -37,7 +37,7 @@ fi
 
 COMPONENT="${1}"
 if [ -z "${COMPONENT}" ]; then
-  echo "Input component name is needed"
+  echo "Frontend"
   exit 1
 fi
 
